@@ -20,10 +20,10 @@ app.post("/business-data" ,(req, res) => {
         }
 
         try {
-            const rating = generateRating() || "4.0";
+            const rating = generateRating();
 
-            const reviews = generateReviews() || "60";
-            const headline = generateHeadline() || `${name} is a good company`;
+            const reviews = generateReviews();
+            const headline = generateHeadline();
              const businessData = {
                 rating, 
                 reviews,
