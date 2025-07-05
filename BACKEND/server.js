@@ -1,5 +1,5 @@
 const generateHeadline =    require("./utils/generateHeadLine");
-const generateReviews = require("./utilsgenerateReviews");
+const generateReviews = require("./utils/generateReviews");
 const generateRating =  require("./utils/generateRating");
 const  seoHeadlines  = require("./utils/seoHeadLines");
 const express = require("express");
