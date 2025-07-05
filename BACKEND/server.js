@@ -1,7 +1,7 @@
-import { generateHeadline } from "./utils/generateHeadLine";
-import {generateReviews} from "./utilsgenerateReviews"
-import {generateRating} from "./utils/generateRating"
-import { seoHeadlines } from "./utils/seoHeadLines";
+const generateHeadline =    require("./utils/generateHeadLine");
+const generateReviews = require("./utilsgenerateReviews");
+const generateRating =  require("./utils/generateRating");
+const  seoHeadlines  = require("./utils/seoHeadLines");
 const express = require("express");
 const app = express();
 
@@ -39,6 +39,26 @@ app.post("/business-data" ,(req, res) => {
 
 
 })
+
+
+app.get('/regenerate-headline', (req, res) => {
+  try {
+    const { name, location } = req.query;
+    
+    if (!name || !location) {
+      return res.status(400).json({ 
+        error: 'business name and location are required' 
+      });
+    }
+
+    const newHeadline = generateHeadline(name, location);
+    
+    res.json({ headline: newHeadline });
+  } catch (error) {
+    res.status(500).json({ error: 'Internal server error bro' });
+  }
+});
+
 
 app.listen(3000,()=> {
     console.log(`Server is listening on port ${3000} bro!`)

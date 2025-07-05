@@ -1,6 +1,6 @@
 
 
-export const seoHeadlines = [
+ const seoHeadlines = [
   "Why {name} is {location}'s Best Kept Secret in 2025",
   "Discover {name}: {location}'s Premier Destination",
   "The Ultimate Guide to {name} in {location}",
@@ -14,3 +14,5 @@ export const seoHeadlines = [
   "Behind the Success of {name} in {location}",
   "Why Everyone's Talking About {name} in {location}"
 ];
+
+module.exports = seoHeadlines;

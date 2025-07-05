@@ -1,4 +1,4 @@
-export const generateHeadline = (name, location) => {
-  const  headLine = seoHeadlines[Math.floor(Math.random() * seoHeadlines.length)];
-  return headLine.replaceAll('{name}', name).replaceAll('{location}', location);
+const generateRating = () => {
+  return Math.round((Math.random() * 1.5 + 3.5) * 10) / 10; 
 };
+module.export = generateRating;
