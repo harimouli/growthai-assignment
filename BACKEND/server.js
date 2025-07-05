@@ -22,8 +22,14 @@ const seoHeadlines = [
 ];
 
 
+const generateHeadline = (name, location) => {
+  const  headLine = seoHeadlines[Math.floor(Math.random() * seoHeadlines.length)];
+  return headLine.replaceAll('{name}', name).replaceAll('{location}', location);
+};
+
+
 const generateReviews = () => {
-  return Math.floor(Math.random() * 500) + 50; // 50-550 range
+  return Math.floor(Math.random() * 500) + 50; 
 };
 
 const generateRating = () => {
@@ -36,7 +42,7 @@ app.post("/business-data" ,(req, res) => {
         const {name, location} = req.body;
 
          if (!name || !location) {
-            res.status(400).json({ 
+            res.status(500).json({ 
                     error: 'Business name and location are required' 
             });
            return;
@@ -57,7 +63,7 @@ app.post("/business-data" ,(req, res) => {
                 businessData   
             })
         }catch(error) {
-                res.status(400).json("Internal server error!")   
+                res.status(500).json("Internal server error!")   
         }
 
 
