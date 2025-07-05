@@ -1,7 +1,7 @@
-const generateHeadline =    require("./utils/generateHeadLine");
+const generateHeadline = require('./utils/generateHeadLine'); 
 const generateReviews = require("./utils/generateReviews");
 const generateRating =  require("./utils/generateRating");
-const  seoHeadlines  = require("./utils/seoHeadLines");
+
 const express = require("express");
 const app = express();
 
@@ -11,9 +11,9 @@ app.use(express.json());
 
 app.post("/business-data" ,(req, res) => {
         const {name, location} = req.body;
-
+   
          if (!name || !location) {
-            res.status(500).json({ 
+            res.status(400).json({ 
                     error: 'Business name and location are required' 
             });
            return;
@@ -23,7 +23,7 @@ app.post("/business-data" ,(req, res) => {
             const rating = generateRating();
 
             const reviews = generateReviews();
-            const headline = generateHeadline();
+            const headline = generateHeadline(name, location);
              const businessData = {
                 rating, 
                 reviews,
@@ -34,7 +34,11 @@ app.post("/business-data" ,(req, res) => {
                 businessData   
             })
         }catch(error) {
-                res.status(500).json("Internal server error!")   
+            console.log(error);
+                res.status(500).json({
+                    error: 
+                      "Internal server error!"
+                })   
         }
 
 
@@ -42,20 +46,25 @@ app.post("/business-data" ,(req, res) => {
 
 
 app.get('/regenerate-headline', (req, res) => {
-  try {
-    const { name, location } = req.query;
-    
+  
+    const name = req.query.name;
+    const location = req.query.location;
+    console.log(name, location);
+    try {
     if (!name || !location) {
-      return res.status(400).json({ 
+      res.status(400).json({ 
         error: 'business name and location are required' 
       });
+
+      return;
     }
 
     const newHeadline = generateHeadline(name, location);
     
     res.json({ headline: newHeadline });
   } catch (error) {
-    res.status(500).json({ error: 'Internal server error bro' });
+    console.log(error);
+    return  res.status(500).json({ error: 'Internal server error bro' });
   }
 });
 
