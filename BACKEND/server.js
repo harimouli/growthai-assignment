@@ -1,41 +1,12 @@
-
+import { generateHeadline } from "./utils/generateHeadLine";
+import {generateReviews} from "./utilsgenerateReviews"
+import {generateRating} from "./utils/generateRating"
+import { seoHeadlines } from "./utils/seoHeadLines";
 const express = require("express");
-
 const app = express();
 
 app.use(express.json());
 
-
-const seoHeadlines = [
-  "Why {name} is {location}'s Best Kept Secret in 2025",
-  "Discover {name}: {location}'s Premier Destination",
-  "The Ultimate Guide to {name} in {location}",
-  "{name} Transforms {location}'s Business Landscape",
-  "Experience Excellence at {name} in {location}",
-  "Why {name} is Taking {location} by Storm",
-  "{name}: Your Next Favorite Spot in {location}",
-  "The Rise of {name} in {location}'s Market",
-  "Exceptional Service Awaits at {name} in {location}",
-  "{name} Sets New Standards in {location}",
-  "Behind the Success of {name} in {location}",
-  "Why Everyone's Talking About {name} in {location}"
-];
-
-
-const generateHeadline = (name, location) => {
-  const  headLine = seoHeadlines[Math.floor(Math.random() * seoHeadlines.length)];
-  return headLine.replaceAll('{name}', name).replaceAll('{location}', location);
-};
-
-
-const generateReviews = () => {
-  return Math.floor(Math.random() * 500) + 50; 
-};
-
-const generateRating = () => {
-  return Math.round((Math.random() * 1.5 + 3.5) * 10) / 10;  // 0 <= 1.5 by adding we get 1.5<= 3.5
-
-};
 
 
 app.post("/business-data" ,(req, res) => {
