@@ -5,21 +5,22 @@ import { HeadLine } from './HeadLine';
 import { StatRate } from './StatRate';
 import { DummyStats } from './DummyStats';
 interface BusinessDisplayProps {
-  data: {
+  data : {
+  businessData: {
     headline: string;
     rating: number;
     reviews: number;
   };
+};
   businessName: string;
   location: string;
   onRegenerateHeadline: () => void;
   isRegenerating: boolean;
 }
 const BusinessDisplay = ({data,businessName,onRegenerateHeadline,isRegenerating,}: BusinessDisplayProps) => {
-    const {businessData} = data;
-    const {headline, reviews, rating} = businessData;
 
-
+    const {headline, reviews, rating} = data.businessData
+    
   return (
     <div className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
      
