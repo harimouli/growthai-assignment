@@ -1,13 +1,16 @@
+
+const express = require("express");
+const cors = require("cors");
 const generateHeadline = require('./utils/generateHeadLine'); 
 const generateReviews = require("./utils/generateReviews");
 const generateRating =  require("./utils/generateRating");
 
-const express = require("express");
+
 const app = express();
 
 app.use(express.json());
 
-
+app.use(cors());
 
 app.post("/business-data" ,(req, res) => {
         const {name, location} = req.body;
