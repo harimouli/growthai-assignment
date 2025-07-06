@@ -50,9 +50,7 @@ app.post("/business-data" ,(req, res) => {
                 headline,
             };
 
-            res.status(200).json({
-                businessData   
-            })
+            res.status(200).json(businessData)
         }catch(error) {
             console.log(error);
                 res.status(500).json({
