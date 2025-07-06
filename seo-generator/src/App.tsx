@@ -1,15 +1,10 @@
+import "./App.css"
 
-
-import './App.css'
-
-function App() {
- 
-
+import { Dashboard } from "./pages/Dashboard";
+const  App = ()=>  {
   return (
-    <div>
-      <h1>Hiii</h1>
-    </div>
+    <Dashboard/>
   )
 }
 
-export default App
+export default App;
