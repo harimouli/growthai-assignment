@@ -4,24 +4,20 @@ import { TotalReviews } from './TotalReviews';
 import { HeadLine } from './HeadLine';
 import { StatRate } from './StatRate';
 import { DummyStats } from './DummyStats';
-interface BusinessData {
-  businessData: { headline: string; rating: number; reviews: number; };
-  rating: number;
-  reviews: number;
-  headline: string;
-}
-
 interface BusinessDisplayProps {
-  data: BusinessData;
+  data: {
+    headline: string;
+    rating: number;
+    reviews: number;
+  };
   businessName: string;
   location: string;
   onRegenerateHeadline: () => void;
   isRegenerating: boolean;
 }
-
 const BusinessDisplay = ({data,businessName,onRegenerateHeadline,isRegenerating,}: BusinessDisplayProps) => {
-    const {headline, rating, reviews} = data.businessData;
-
+    const {businessData} = data;
+    const {headline, reviews, rating} = businessData;
 
 
   return (
