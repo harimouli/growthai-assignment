@@ -10,7 +10,12 @@ const app = express();
 
 app.use(express.json());
 
-app.use(cors());
+app.use(cors({
+  origin: "http://localhost:5173",
+  methods: ["GET", "POST"],
+  credentials: true
+}));
+
 
 app.post("/business-data" ,(req, res) => {
         const {name, location} = req.body;
