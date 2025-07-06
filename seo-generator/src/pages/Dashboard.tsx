@@ -39,7 +39,7 @@ export const Dashboard = () => {
                     <LoadingSpinner />
                     ) : data && businessInfo ? (
                     <BusinessDisplay
-                        data={{ businessData: data }}
+                        data={data.businessData}
                         businessName={businessInfo.name}
                         location={businessInfo.location}
                         onRegenerateHeadline={regenerateHeadline}
